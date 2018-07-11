@@ -37,6 +37,23 @@ namespace BestRestaurants.Models
             }
         }
 
+        public static void DeleteAll()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"DELETE FROM people;";
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
+
         public static List<People> GetAll()
         {
             List<People> allPeople = new List<People> { };
@@ -80,9 +97,6 @@ namespace BestRestaurants.Models
                 conn.Dispose();
             }
         }
-
-
-
 
     }
 }
