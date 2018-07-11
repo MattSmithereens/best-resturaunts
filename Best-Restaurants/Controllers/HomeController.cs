@@ -9,7 +9,7 @@ namespace Best_Restaurants.Controllers
     public class HomeController : Controller
     {
         [HttpGet("/")]
-        public IActionResult Index()
+        public ActionResult Index()
         {
             return View();
         }

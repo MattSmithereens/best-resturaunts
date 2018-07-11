@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BestRestaurants.Controllers
 {
-    public class FormsController : Controller
+    public class PeopleController : Controller
     {
         [HttpGet("/accounts/new")]
         public ActionResult NewAccountForm()
