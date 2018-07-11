@@ -16,5 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Views\Results\" />
+    <Folder Include="Views\Forms\" />
   </ItemGroup>
 </Project>

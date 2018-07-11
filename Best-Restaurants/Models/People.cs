@@ -80,7 +80,6 @@ namespace BestRestaurants.Models
 
             cmd.Parameters.AddWithValue("@PeopleName", this.PeopleName);
 
-
             cmd.ExecuteNonQuery();
             this.PeopleId = (int)cmd.LastInsertedId;
 
