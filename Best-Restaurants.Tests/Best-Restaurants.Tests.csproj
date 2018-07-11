@@ -15,8 +15,13 @@
   <ItemGroup>
     <Folder Include="ModelTests\" />
     <Folder Include="ControllerTests\" />
+    <Folder Include="ModelTests\" />
+    <Folder Include="ControllerTests\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Best-Restaurants\Best-Restaurants.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="ModelTests\Cuisines.Tests" />
   </ItemGroup>
 </Project>
