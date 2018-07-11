@@ -81,7 +81,7 @@ namespace BestRestaurants.Models
             conn.Open();
 
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"INSERT INTO restaurants (resturantName, cuisineId) VALUES (@RestaurantName, @CuisineId);";
+            cmd.CommandText = @"INSERT INTO restaurants (name, cuisine_id) VALUES (@RestaurantName, @CuisineId);";
 
             cmd.Parameters.AddWithValue("@RestaurantName", this.RestaurantName);
             cmd.Parameters.AddWithValue("@CuisineId", this.CuisineId);
@@ -96,9 +96,6 @@ namespace BestRestaurants.Models
                 conn.Dispose();
             }
         }
-
-
-
 
     }
 }
