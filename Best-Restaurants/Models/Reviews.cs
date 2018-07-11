@@ -12,16 +12,9 @@ namespace BestRestaurants.Models
         public int PeopleId { get; set; }
         public int RestaurantId { get; set; }
 
-        public Reviews(int Id, int reviewsRating, int peopleId, int restaurantId)
+        public Reviews(int reviewsRating, int peopleId, int restaurantId, int Id = 0)
         {
             this.ReviewsId = Id;
-            this.ReviewsRating = reviewsRating;
-            this.PeopleId = peopleId;
-            this.RestaurantId = restaurantId;
-        }
-
-        public Reviews(int reviewsRating, int peopleId, int restaurantId)
-        {
             this.ReviewsRating = reviewsRating;
             this.PeopleId = peopleId;
             this.RestaurantId = restaurantId;
@@ -77,7 +70,7 @@ namespace BestRestaurants.Models
                 int peopleId = rdr.GetInt32(2);
                 int restaurantId = rdr.GetInt32(3);
 
-                Reviews newReviews = new Reviews(reviewsId, reviewsRating, peopleId, restaurantId);
+                Reviews newReviews = new Reviews(reviewsRating, peopleId, restaurantId, reviewsId);
                 allReviews.Add(newReviews);
             }
             conn.Close();

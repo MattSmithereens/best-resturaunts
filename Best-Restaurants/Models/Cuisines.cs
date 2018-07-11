@@ -9,16 +9,10 @@ namespace BestRestaurants.Models
         public int CuisinesId { get; set; }
         public string CuisinesType { get; set; }
 
-        public Cuisines(int Id, string CuisinesType)
+        public Cuisines(string CuisinesType, int Id = 0)
         {
             this.CuisinesId = Id;
             this.CuisinesType = CuisinesType;
-        }
-
-        public Cuisines(string CuisinesType)
-        {
-            this.CuisinesType = CuisinesType;
-
         }
 
         public override bool Equals(System.Object otherCuisines)
@@ -65,7 +59,7 @@ namespace BestRestaurants.Models
             {
                 int cuisinesId = rdr.GetInt32(0);
                 string cuisinesType = rdr.GetString(1);
-                Cuisines newCuisines = new Cuisines(cuisinesId, cuisinesType);
+                Cuisines newCuisines = new Cuisines(cuisinesType, cuisinesId);
                 allCuisines.Add(newCuisines);
             }
             conn.Close();

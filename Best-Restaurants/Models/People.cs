@@ -10,16 +10,10 @@ namespace BestRestaurants.Models
         public int PeopleId { get; set; }
         public string PeopleName { get; set; }
 
-        public People(int Id, string PeopleName)
+        public People(string PeopleName, int Id = 0)
         {
             this.PeopleId = Id;
             this.PeopleName = PeopleName;
-        }
-
-        public People(string PeopleName)
-        {
-            this.PeopleName = PeopleName;
-
         }
 
         public override bool Equals(System.Object otherPeople)
@@ -66,7 +60,7 @@ namespace BestRestaurants.Models
             {
                 int peopleId = rdr.GetInt32(0);
                 string peopleName = rdr.GetString(1);
-                People newPeople = new People(peopleId, peopleName);
+                People newPeople = new People(peopleName, peopleId);
                 allPeople.Add(newPeople);
             }
             conn.Close();

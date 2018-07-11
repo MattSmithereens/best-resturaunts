@@ -11,15 +11,9 @@ namespace BestRestaurants.Models
         public string RestaurantName { get; set; }
         public int CuisineId { get; set; }
 
-        public Restaurants(int Id, string restaurantName, int cuisineId)
+        public Restaurants(string restaurantName, int cuisineId, int Id = 0 )
         {
             this.RestaurantId = Id;
-            this.RestaurantName = restaurantName;
-            this.CuisineId = cuisineId;
-        }
-
-        public Restaurants(string restaurantName, int cuisineId)
-        {
             this.RestaurantName = restaurantName;
             this.CuisineId = cuisineId;
         }
@@ -70,7 +64,7 @@ namespace BestRestaurants.Models
                 int restaurantId = rdr.GetInt32(0);
                 string restaurantName = rdr.GetString(1);
                 int cuisineId = rdr.GetInt32(2);
-                Restaurants newRestaurant = new Restaurants(restaurantId, restaurantName, cuisineId);
+                Restaurants newRestaurant = new Restaurants(restaurantName, cuisineId, restaurantId);
                 allRestaurants.Add(newRestaurant);
             }
             conn.Close();
