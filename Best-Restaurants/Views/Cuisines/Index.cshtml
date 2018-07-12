@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Cuisines";
+}
+
+<h1>Restaurants</h1>
+<a href="/cuisines/add"><button>Add more cuisines
+<div class="cuisinesTable">
+    @foreach(var cuisine in Model)
+    {
+        <div class="cell">@cuisine.CuisineType</div>
+    }
+</div>

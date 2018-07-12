@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Add Restaurants";
+}
+
+<h1>PAdd a restaurant</h1>
+
+<form action="/restaurants" method="post">
+    <label for="name">Enter Restaurant</label>
+    <input name="name" type="text" placeholder="Restaurant" required>
+    <label for="cuisineId">Choose a cuisine type</label>
+    <select name="cuisineId">
+      @if (Model.Count == 0)
+      {
+        <p>Enter Some Cuisines first!</p>
+      }
+     else
+     {
+        foreach(var cuisine in Model)
+        {
+            <option value="cuisine.CuisinesId">@cuisine.CuisineName</option>
+        }
+     }
+        
+    </select>
+    <button type="submit">Add Resturant</button>
+</form>
+
+
+<a href="/"><button type="submit">Back</button></a>

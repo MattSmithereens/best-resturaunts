@@ -97,5 +97,38 @@ namespace BestRestaurants.Models
             }
         }
 
+        public static Restaurants Find(int id)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM `restaurants` WHERE id = @thisId;";
+
+            cmd.Parameters.AddWithValue("@thisId", id);
+
+            var rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+            int restaurantId = 0;
+            string restaurantName = "";
+            int cuisineId = 0;
+
+            while (rdr.Read())
+            {
+                restaurantId = rdr.GetInt32(0);
+                restaurantName = rdr.GetString(1);
+                cuisineId = rdr.GetInt32(2);
+            }
+
+            Restaurants foundItem = new Restaurants(restaurantName, cuisineId, restaurantId);
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+            return foundItem;
+        }
+
     }
 }

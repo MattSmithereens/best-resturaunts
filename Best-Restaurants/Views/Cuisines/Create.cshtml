@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Add Cuisine";
+}
+
+<h1>Enter a cuisine</h1>
+
+<form action="/cuisines" method="post">
+    <label for="name">Enter Cuisine</label>
+    <input name="name" type="text" placeholder="Cuisine" required>
+
+        
+    <button type="submit">Add cuisine</button>
+</form>
+
+
+<a href="/"><button type="submit">Back</button></a>

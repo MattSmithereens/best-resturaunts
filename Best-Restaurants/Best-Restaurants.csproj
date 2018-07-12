@@ -16,7 +16,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Views\Results\" />
+    <Folder Include="Views\Reviews\" />
     <Folder Include="Views\People\" />
+    <Folder Include="Views\Restaurants\" />
+    <Folder Include="Views\Cuisines\" />
   </ItemGroup>
 </Project>

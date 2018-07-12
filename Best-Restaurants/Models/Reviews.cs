@@ -101,5 +101,42 @@ namespace BestRestaurants.Models
                 conn.Dispose();
             }
         }
+
+        public static Reviews Find(int id)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM `reviews` WHERE id = @thisId;";
+
+            cmd.Parameters.AddWithValue("@thisId", id);
+
+            var rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+            int reviewsId = 0;
+            int reviewsRating = 0;
+            int peopleId = 0;
+            int restaurantId = 0;
+
+            while (rdr.Read())
+            {
+                reviewsId = rdr.GetInt32(0);
+                reviewsRating = rdr.GetInt32(1);
+                peopleId = rdr.GetInt32(2);
+                restaurantId = rdr.GetInt32(3);
+            }
+
+            Reviews foundItem = new Reviews(reviewsRating, peopleId, restaurantId, reviewsId);  
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+
+            return foundItem; 
+
+        }
     }
 }

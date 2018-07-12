@@ -90,5 +90,35 @@ namespace BestRestaurants.Models
             }
         }
 
+        public static People Find(int id)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM `people` WHERE id = @thisId;";
+
+            cmd.Parameters.AddWithValue("@thisId", id);
+
+            var rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+            int peopleId = 0;
+            string peopleName = "";
+
+            while (rdr.Read())
+            {
+                peopleId = rdr.GetInt32(0);
+                peopleName = rdr.GetString(1);
+            }
+
+            People foundItem = new People(peopleName, peopleId);
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+            return foundItem;
+        }
     }
 }
