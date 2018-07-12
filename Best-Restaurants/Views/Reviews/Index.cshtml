@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Reviews";
+}
+
+<h1>Cuisines</h1>
+<a href="/reviews/add"><button>Add a review</button></a>
+<div class="reviewsTable">
+    @foreach(var review in Model)
+    {
+        <div class="cell">@review.reviewsRating</div>
+    }
+</div>
+
+<a href="/"><button>Back</button></a>

@@ -9,7 +9,7 @@
     @foreach(var restaurant in Model)
     {
         <div class="cell">@restaurant.RestaurantName</div>
-        <div class="cell">@restaurant.CuisineId</div>
+        <div class="cell">@restaurant.GetCuisines()</div>
     }
 </div>
 
