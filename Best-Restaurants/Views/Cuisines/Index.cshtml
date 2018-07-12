@@ -2,11 +2,13 @@
     ViewData["Title"] = "Cuisines";
 }
 
-<h1>Restaurants</h1>
-<a href="/cuisines/add"><button>Add more cuisines
+<h1>Cuisines</h1>
+<a href="/cuisines/add"><button>Add more cuisines</button></a>
 <div class="cuisinesTable">
     @foreach(var cuisine in Model)
     {
-        <div class="cell">@cuisine.CuisineType</div>
+        <div class="cell">@cuisine.CuisinesType</div>
     }
 </div>
+
+<a href="/"><button>Back</button></a>

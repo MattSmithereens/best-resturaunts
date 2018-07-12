@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BestRestaurants.Controllers
 {
-    public class CuisineController : Controller
+    public class CuisinesController : Controller
     {
         [HttpGet("/cuisines")]
         public ActionResult Index()
@@ -18,9 +18,9 @@ namespace BestRestaurants.Controllers
         }
 
         [HttpPost("/cuisines")]
-        public ActionResult NewCuisine(string name, int cuisineId)
+        public ActionResult NewCuisine(string name)
         {
-            Cuisines newCuisine = new Cuisines(name, cuisineId);
+            Cuisines newCuisine = new Cuisines(name);
             newCuisine.Save();
             return RedirectToAction("Index");
         }

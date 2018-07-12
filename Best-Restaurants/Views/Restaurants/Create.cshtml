@@ -2,7 +2,7 @@
     ViewData["Title"] = "Add Restaurants";
 }
 
-<h1>PAdd a restaurant</h1>
+<h1>Add a restaurant</h1>
 
 <form action="/restaurants" method="post">
     <label for="name">Enter Restaurant</label>
@@ -17,7 +17,7 @@
      {
         foreach(var cuisine in Model)
         {
-            <option value="cuisine.CuisinesId">@cuisine.CuisineName</option>
+            <option value="cuisine.CuisinesId">@cuisine.CuisinesType</option>
         }
      }
         
