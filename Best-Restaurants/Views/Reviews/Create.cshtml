@@ -5,38 +5,56 @@
 <h1>Add a restaurant</h1>
 
 <form action="/reviews" method="post">
-    
-    <label for="resturantId">Choose a resturant</label>
-    <select name="restaurantId" required>
+    @if (Model["allRestaurants"].length == 0)
+    {
+        <p>Make a restaurant first</p>
+        <a href="/restaurants">Click here to make a restaurant</a>
+    }
+    else
+    {
+        <label for="resturantId">Choose a resturant</label>
+        <select name="restaurantId" required>
         
-        @foreach (var restaurant in Model[0].GetRestaurants())
+        @foreach (var restaurant in Model["allRestuarants"])
         {
             <option value="@restaurant.RestaurantId">@restaurant.RestaurantName</option>
         }
 
+        </select>
+        <label for="reviewsRating">Rate the restaurant</label>
+        <select name="reviewsRating" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+ 
 
-    </select>
-
-    <label for="reviewsRating">Rate the restaurant</label>
-    <select name="reviewsRating" required>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-
-    <label for="peopleId">Select your ID Number</label>
-    <select name="peopleId" required>
+        if (Model[0].GetPeople().length == 0)
         {
-            @foreach (var people in Model.GetPeople())
-            {
-                <option value="@people.PeopleId">@people.PeopleName</option>
-            }
+            <p>Make an account first</p>
+            <a href="/restaurants">Click here to make a restaurant</a>
+
         }
-    </select>
+        else 
+        {
+            <label for="peopleId">Select your ID Number</label>
+            <select name="peopleId" required>
+                {
+                    @foreach (var people in Model["allPeople"])
+                    {
+                        <option value="@people.PeopleId">@people.PeopleName</option>
+                    }
+                }
+            </select>
+            
+            <button type="submit">Add Review</button>
+        }
+
+    }
     
-    <button type="submit">Add Review</button>
+
 </form>
 
 

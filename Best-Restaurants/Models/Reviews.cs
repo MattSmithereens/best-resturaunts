@@ -140,56 +140,5 @@ namespace BestRestaurants.Models
         }
 
 
-        public List<Restaurants> GetRestaurants()
-        {
-            List<Restaurants> allRestaurants = new List<Restaurants> { };
-            MySqlConnection conn = DB.Connection();
-            conn.Open();
-            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"SELECT * FROM cuisines";
-            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
-            while (rdr.Read())
-            {
-                int restaurantId = rdr.GetInt32(0);
-                string restaurantName = rdr.GetString(1);
-                int cuisineId = rdr.GetInt32(2);
-                Restaurants newRestaurants = new Restaurants(restaurantName, cuisineId);
-                newRestaurants.RestaurantId = restaurantId;
-                allRestaurants.Add(newRestaurants);
-            }
-            conn.Close();
-            if (conn != null)
-            {
-                conn.Dispose();
-            }
-            return allRestaurants;
-        }
-
-
-        public List<People> GetPeople()
-        {
-            List<People> allPeople = new List<People> { };
-            MySqlConnection conn = DB.Connection();
-            conn.Open();
-            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"SELECT * FROM people";
-            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
-            while (rdr.Read())
-            {
-                int peopleId = rdr.GetInt32(0);
-                string peopleName = rdr.GetString(1);
-                People newPeople = new People(peopleName);
-                newPeople.PeopleId = peopleId;
-                allPeople.Add(newPeople);
-            }
-            conn.Close();
-            if (conn != null)
-            {
-                conn.Dispose();
-            }
-            return allPeople;
-        }
-
-
     }
 }

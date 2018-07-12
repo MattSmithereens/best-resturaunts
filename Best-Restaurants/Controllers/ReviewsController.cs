@@ -30,10 +30,11 @@ namespace BestRestaurants.Controllers
         [HttpGet("/reviews/add")]
         public ActionResult Create()
         {
-            List<Cuisines> cuisinesList = new List<Cuisines> { };
-            cuisinesList = Cuisines.GetAll();
 
-            return View(cuisinesList);
+            Dictionary<string, object> model = new Dictionary<string, object>();
+            model.Add("allPeople", People.GetAll());
+            model.Add("allRestaurants", Restaurants.GetAll());
+            return View(model);
         }
     }
 }

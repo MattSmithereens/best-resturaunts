@@ -2,12 +2,14 @@
     ViewData["Title"] = "Reviews";
 }
 
-<h1>Cuisines</h1>
+<h1>Reviews</h1>
 <a href="/reviews/add"><button>Add a review</button></a>
 <div class="reviewsTable">
     @foreach(var review in Model)
     {
-        <div class="cell">@review.reviewsRating</div>
+        <div class="cell">@review.ReviewsRating</div>
+        <div class="cell">@review.GetRestaurant()[0].RestaurantName</div>
+        <div class="cell">@review.GetPeople()[0].PeopleName</div>
     }
 </div>
 
