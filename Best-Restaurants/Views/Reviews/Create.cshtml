@@ -7,14 +7,18 @@
 <form action="/reviews" method="post">
     
     <label for="resturantId">Choose a resturant</label>
-    <select name="restaurantId">
+    <select name="restaurantId" required>
+        
+        @foreach (var restaurant in Model[0].GetRestaurants())
         {
-        <option value="review.resturantId">@review.restaurantName</option>
+            <option value="@restaurant.RestaurantId">@restaurant.RestaurantName</option>
         }
+
+
     </select>
 
     <label for="reviewsRating">Rate the restaurant</label>
-    <select name="reviewsRating">
+    <select name="reviewsRating" required>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -23,9 +27,12 @@
     </select>
 
     <label for="peopleId">Select your ID Number</label>
-    <select name="peopleId">
+    <select name="peopleId" required>
         {
-        <option value="review.peopleId">@review.peopleId</option>
+            @foreach (var people in Model.GetPeople())
+            {
+                <option value="@people.PeopleId">@people.PeopleName</option>
+            }
         }
     </select>
     

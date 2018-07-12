@@ -8,16 +8,27 @@
     <label for="name">Enter Restaurant</label>
     <input name="name" type="text" placeholder="Restaurant" required>
     <label for="cuisineId">Choose a cuisine type</label>
-    <select name="cuisineId">
-
-    @foreach(var cuisine in Model)
+    @if (Model.Count == 0)
     {
-        <option value="cuisine.CuisinesId">@cuisine.CuisinesType</option>
+
+    <p>Enter a cuisine first!</p>
+    <a href="/cuisines">Clicke here to add a cuisine</a>
+
+    }
+    else
+    {
+        <select name="cuisineId">
+
+            @foreach(var cuisine in Model)
+            {
+                <option value="@cuisine.CuisinesId">@cuisine.CuisinesType</option>
+            }
+
+            
+        </select>
+        <button type="submit">Add Resturant</button>
     }
 
-        
-    </select>
-    <button type="submit">Add Resturant</button>
 </form>
 
 
